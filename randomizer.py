@@ -346,6 +346,8 @@ class Randomizer:
     yield("Modifying game code...", options_completed)
     
     customizer.decide_on_link_model(self)
+
+    self.import_all_text()
     
     if not self.dry_run:
       self.apply_necessary_tweaks()
@@ -792,6 +794,7 @@ class Randomizer:
   def save_randomized_iso(self):
     self.bmg.save_changes()
     
+    
     for file_path, data in self.raw_files_by_path.items():
       self.gcm.changed_files[file_path] = data
     
@@ -1128,3 +1131,19 @@ class Randomizer:
   
   def disassemble_all_code(self):
     disassemble.disassemble_all_code(self)
+   	
+  def export_all_text(self):
+   i = 0
+   for msg in self.bmg.messages:
+    text_file = open("./custom_msg/" + str(i) + ".txt", "w")
+    text_file.write(msg.string)
+    i += 1
+    text_file.close()
+	
+  def import_all_text(self):
+   i = 0
+   for msg in self.bmg.messages:
+    text_file = open("./custom_msg/" + str(i) + ".txt", "r")
+    msg.string = text_file.read()
+    i += 1
+    text_file.close()

@@ -57,6 +57,7 @@ def start_ship_at_outset(self):
   # Change the King of Red Lion's default position so that he appears on Outset at the start of the game.
   change_ship_starting_island(self, 44)
   
+  
 def make_all_text_instant(self):
   for msg in self.bmg.messages:
     msg.initial_draw_type = 1 # Instant initial draw type
@@ -354,6 +355,7 @@ def add_ganons_tower_warp_to_ff2(self):
   layer_1_warp.params = layer_2_warp.params
   layer_1_warp.x_pos = layer_2_warp.x_pos
   layer_1_warp.y_pos = layer_2_warp.y_pos
+  layer_1_warp.y_pos = layer_2_warp.y_pos
   layer_1_warp.z_pos = layer_2_warp.z_pos
   layer_1_warp.x_rot = layer_2_warp.x_rot
   layer_1_warp.y_rot = layer_2_warp.y_rot
@@ -529,7 +531,7 @@ def update_game_name_icon_and_banners(self):
   banner_data = self.get_raw_file("files/opening.bnr")
   write_magic_str(banner_data, 0x1860, new_game_name, 0x40)
   
-  new_game_id = "GZLE99"
+  new_game_id = "GZLE93"
   boot_data = self.get_raw_file("sys/boot.bin")
   write_magic_str(boot_data, 0, new_game_id, 6)
   
